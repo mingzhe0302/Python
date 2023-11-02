@@ -123,3 +123,168 @@ else:
 
 
 #8. Hot Dog Cookout Calculator
+HOTDOGS= 10
+HOTDOGS_BUN = 8
+numOfPeopleAttend = int(input("Enter a number of people: "))
+numOfHotdogsGiven = int(input("Enter a number of hot dogs each person will be given: "))
+
+totalNumOfHotdogs = numOfPeopleAttend * numOfHotdogsGiven
+numOfHotdogsInPackage = totalNumOfHotdogs / HOTDOGS
+numOfHotdogsBunInPackage = totalNumOfHotdogs/ HOTDOGS_BUN
+
+numberOfHotdogsLeftOver = totalNumOfHotdogs % HOTDOGS
+numberOfHotdogsBunLeftOver = totalNumOfHotdogs % HOTDOGS_BUN
+
+print("Minimum number of packages of hot dogs required = ", numOfHotdogsInPackage)
+print("Minimum number of packages of hot dogs bun required = ", numOfHotdogsBunInPackage)
+print("Number of hot dogs that will be left over = ", numberOfHotdogsLeftOver)
+print("Number of hot dogs bun that will be left over = ", numberOfHotdogsBunLeftOver)
+
+
+
+#9. Roulette wheel colors
+pocketNum = int(input("Enter a pocket number: "))
+
+if(pocketNum == 0):
+    print("The pocket number is green.")
+
+elif(pocketNum >= 1 and pocketNum <= 10):
+    if(pocketNum % 2 == 0):
+        print("The even-numbered pockets are black.")
+    elif(pocketNum % 2 == 1):
+        print("The odd-numbered pockets are red.")
+
+elif(pocketNum >= 11 and pocketNum <= 18):
+    if(pocketNum % 2 == 0):
+        print("The even-numbered pockets are red.")
+    elif(pocketNum % 2 == 1):
+        print("The odd-numbered pockets are black.")
+
+elif(pocketNum >= 19 and pocketNum <= 28):
+    if(pocketNum % 2 == 0):
+        print("The even-numbered pockets are black.")
+    elif(pocketNum % 2 == 1):
+        print("The odd-numbered pockets are red.")
+    
+elif(pocketNum >= 29 and pocketNum <= 36):
+    if(pocketNum % 2 == 0):
+        print("The even-numbered pockets are red.")
+    elif(pocketNum % 2 == 1):
+        print("The odd-numbered pockets are black.")
+else:
+    print("The pocket number is out of range, should inside the range of 0 through 36.")
+
+
+
+#10. Money Counting game
+pennies = int(input("Please enter a number of pennies: "))
+nickels = int(input("Please enter a number of nickels: "))
+dimes = int(input("Please enter a number of dimes: "))
+quarters = int(input("Please enter a number of quarters: "))
+
+valueOfPennies = pennies * 1
+valueOfNickels = nickels * 5
+valueOfDimes = dimes * 10
+valueOfQuarters = quarters * 25
+
+totalValue = valueOfPennies + valueOfNickels + valueOfDimes + valueOfQuarters
+
+ONEDOLLAR = 100
+
+if(totalValue == ONEDOLLAR):
+    print("Congratulation, You win a game.")
+elif(totalValue < ONEDOLLAR):
+    print("The amount entered was less than one dollar.")
+else:
+      print("The amount entered was more than one dollar.")
+
+
+
+
+#11. Book Club Points
+bookPurchase = int(input("Enter a number of book purchased this month: "))
+
+if bookPurchase == 0:
+    points = 0
+elif bookPurchase == 2:
+    points = 5
+elif bookPurchase == 4:
+    points = 15
+elif bookPurchase == 6:
+    points = 30
+elif bookPurchase >= 8:
+    points = 60
+
+print("The number of points awarded this month: " + format(points, ".2f"))
+
+
+
+
+#12. Software sales
+packagePurchased = int(input("Enter a number of package purchased: "))
+
+PACKAGE_PRICE = 99
+
+if packagePurchased < 10:
+    discount = 0.0
+elif packagePurchased >= 10 and packagePurchased <= 19:
+    discount = 0.1
+elif packagePurchased >= 20 and packagePurchased <= 49:
+    discount = 0.2
+elif packagePurchased >= 50 and packagePurchased <= 99:
+    discount = 0.3
+elif packagePurchased >= 100:
+    discount = 0.4
+    
+totalPrice = packagePurchased * PACKAGE_PRICE * (1 - discount)
+print("The amount of discount is RM " + format(discount, ".2%"))
+print("The total amount of the purchase after the discount is RM " + format(totalPrice, ".2f"))
+
+
+
+#13. Shipping Charges
+packageWeight = float(input("Enter a pounds of a packages: "))
+
+if packageWeight <= 2:
+    ratePerPound = 1.5
+elif packageWeight > 2 and packageWeight <= 6:
+    ratePerPound = 3.0
+elif packageWeight > 6 and packageWeight <= 10:
+    ratePerPound = 4.0
+elif packageWeight > 10:
+    ratePerPound = 4.75
+
+print("The shipping charges is $ " + format(ratePerPound, ".2f"))
+
+
+
+#14. Body Mass Index
+weightOfBody = float(input("Enter your weight: "))
+heightOfBody = float(input("Enter your height: "))
+
+BMI = (weightOfBody * 703) / heightOfBody ** 2
+
+if BMI >= 18.5 and BMI <= 25:
+    print("Your weight consider as a optimal weight.")
+elif BMI < 18.5:
+    print("Your weight consider as a underweight.")
+elif BMI > 25:
+    print("Your weight consider as a overweight.")
+
+
+
+
+#15. Time Calculator
+second = float(input("Enter a number of seconds: "))
+
+ONE_MINUTE = second / 60
+ONE_HOUR = second / 3600
+ONE_DAY = second / 86400
+
+if second >= 60:
+    print("The number of ", format(ONE_MINUTE, ".2f"), "minutes in that ", second, "second.")
+elif second >= 3600:
+    print("The number of ", format(ONE_HOUR, ".2f"), "hours in that ", second , "second.")
+elif second >= 86400:
+    print("The number of ", format(ONE_DAY, ".2f"),  "days in that ", second , "second.")
+
