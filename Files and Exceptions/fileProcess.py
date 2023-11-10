@@ -89,4 +89,93 @@ main()
 
 
 #Modifying Record
-    
+"""
+import os  #needed for the remove and rename functions
+
+def main():
+    found = False
+
+    search = input("Enter a description to search for: ")
+    newQty = int(input("Enter a new quantity: "))
+
+    coffeeFile = open("coffee.txt", "r")
+    tempFile = open("temp.txt", "w") 
+
+    descr = coffeeFile.readline()
+
+    while descr != "":
+        qty = float(coffeeFile.readline())
+        descr = descr.rstrip("\n")
+
+        if descr == search:
+            tempFile.write(descr + "\n")
+            tempFile.write(str(newQty) + "\n")
+
+            found = True
+        else:
+            tempFile.write(descr + "\n")
+            tempFile.write(str(qty) + "\n")
+        
+        descr = coffeeFile.readline()
+
+    coffeeFile.close()
+    tempFile.close()
+
+    os.remove("coffee.txt")
+    os.rename("temp.txt", "coffee.txt")
+
+    if found:
+        print("The file has been updated.")
+    else:
+        print("That item was not found in the file.")
+
+main()
+   
+"""
+
+
+#Deleting Records
+"""
+import os
+
+def main():
+    found = False
+
+    search = input("Which coffee do you want to delete: ")
+
+    coffeeFile = open("coffee.txt", "r")
+
+    tempFile = open("temp.txt", "w")
+
+    descr = coffeeFile.readline()
+
+    while descr != "":
+        qty = float(coffeeFile.readline())
+
+        descr = descr.rstrip("\n")
+
+        if descr != search:
+            tempFile.write(descr + "\n")
+            tempFile.write(str(qty) + "\n")
+        else:
+            found = True
+
+        descr = coffeeFile.readline()
+
+    coffeeFile.close()
+    tempFile.close()
+
+    os.remove("coffee.txt")
+    os.rename("temp.txt", "coffee.txt")
+
+    if found:
+        print("The file has been updated.")
+    else:
+        print("That item was not found in the file.")
+
+main()
+"""
+
+
+
+
