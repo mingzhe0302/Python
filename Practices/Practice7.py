@@ -409,10 +409,81 @@ def deleteInfo(userDict):
         print(f"{name} not found in the user dictionary")
 
 # Example usage
-userMenu()
+# userMenu()
 
 
 #8. BlackJack Simulation
+import random
 
+def deal_card():
+    """Return a random card from the deck."""
+    cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11] * 4
+    return random.choice(cards)
+
+def calculate_score(cards):
+    """Take a list of cards and return the score calculated from the cards."""
+    # Check for blackjack (an Ace and a 10-value card)
+    if sum(cards) == 21 and len(cards) == 2:
+        return 0  # Blackjack
+    # Convert Ace from 11 to 1 if the score is over 21
+    if 11 in cards and sum(cards) > 21:
+        cards.remove(11)
+        cards.append(1)
+    return sum(cards)
+
+def compare(player_score, opponent_score):
+    """Compare the scores of the player and opponent."""
+    if player_score > 21 and opponent_score > 21:
+        return "You went over. You lose!"
+    if player_score == opponent_score:
+        return "It's a draw!"
+    elif opponent_score == 0:
+        return "Opponent has Blackjack. You lose!"
+    elif player_score == 0:
+        return "You have Blackjack. You win!"
+    elif player_score > 21:
+        return "You went over. You lose!"
+    elif opponent_score > 21:
+        return "Opponent went over. You win!"
+    elif player_score > opponent_score:
+        return "You win!"
+    else:
+        return "You lose!"
+
+def play_game():
+    player_cards = []
+    opponent_cards = []
+    game_over = False
+
+    for _ in range(2):
+        player_cards.append(deal_card())
+        opponent_cards.append(deal_card())
+
+    while not game_over:
+        player_score = calculate_score(player_cards)
+        opponent_score = calculate_score(opponent_cards)
+
+        print(f"Your cards: {player_cards}, current score: {player_score}")
+        print(f"Opponent's first card: {opponent_cards[0]}")
+
+        if player_score == 0 or opponent_score == 0 or player_score > 21:
+            game_over = True
+        else:
+            another_card = input("Type 'y' to get another card, 'n' to pass: ")
+            if another_card == 'y':
+                player_cards.append(deal_card())
+            else:
+                game_over = True
+
+    while opponent_score != 0 and opponent_score < 17:
+        opponent_cards.append(deal_card())
+        opponent_score = calculate_score(opponent_cards)
+
+    print(f"Your final hand: {player_cards}, final score: {player_score}")
+    print(f"Opponent's final hand: {opponent_cards}, final score: {opponent_score}")
+    print(compare(player_score, opponent_score))
+
+# Run the game
+play_game()
 
 
